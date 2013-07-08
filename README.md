@@ -1,4 +1,4 @@
 daycountr
 =========
 
-R package for day count conventions
+R package for day count conventions.
