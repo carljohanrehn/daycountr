@@ -3,4 +3,4 @@ daycountr
 
 R package for day count conventions.
 
-\( D \)
+\( D_i, i = 1, \ldots, n \)
