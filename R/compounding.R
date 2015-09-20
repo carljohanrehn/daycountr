@@ -35,7 +35,7 @@
 #' 
 #' r <- rates(times, discountFactors)
 
-discountToRate <- discount2rate <- function(compounding = "continuous", frequency = 1, ...) {
+discountToRate <- discount2rate <- function(compounding="continuous", frequency = 1, ...) {
   if ( compounding == "continuous" )
     function(times, discountFactors) { 
       -log(discountFactors) / times 
@@ -90,7 +90,7 @@ discountToRate <- discount2rate <- function(compounding = "continuous", frequenc
 #' 
 #' d <- discountFactors(times, rates)
 
-rateToDiscount <- rate2discount <- function(compounding = "continuous", frequency = 1, ...) {  
+rateToDiscount <- rate2discount <- function(compounding="continuous", frequency = 1, ...) {
   if ( compounding == "continuous" )
     function(times, rates) {
       exp(-rates * times)
@@ -125,7 +125,7 @@ rateToDiscount <- rate2discount <- function(compounding = "continuous", frequenc
 #' 
 #' discreteRates <- continuousToDiscrete(rates)
 
-continuousToDiscrete <- continuous2discrete <- function(rates, frequency = 1, ...) { 
+continuousToDiscrete <- continuous2discrete <- function(rates, frequency=1, ...) {
   frequency * ( exp(rates / frequency) - 1 ) 
 }
 
@@ -141,7 +141,7 @@ continuousToDiscrete <- continuous2discrete <- function(rates, frequency = 1, ..
 #' 
 #' rates <- discreteToContinuous(discreteRates)
 
-discreteToContinuous <- discrete2continuous <- function(rates, frequency = 1, ...) { 
+discreteToContinuous <- discrete2continuous <- function(rates, frequency=1, ...) {
   frequency * ( log(1 + rates / frequency) ) 
 }
 
@@ -157,7 +157,7 @@ discreteToContinuous <- discrete2continuous <- function(rates, frequency = 1, ..
 #' 
 #' rates2 <- discreteToDiscrete(rates, 1, 2)
 
-discreteToDiscrete <- discrete2discrete <- function(rates, frequency1 = 1, frequency2 = 1, ...) {
+discreteToDiscrete <- discrete2discrete <- function(rates, frequency1=1, frequency2=1, ...) {
   frequency2 * ( ( 1 + rates / frequency1 ) ^ ( frequency1 / frequency2 ) - 1 )
 }
 
@@ -168,7 +168,7 @@ discreteToDiscrete <- discrete2discrete <- function(rates, frequency1 = 1, frequ
 #'
 
 conventionToConvention <- convention2Convention <- 
-  function(rate, date1, date2, from = "ActualActual", to = "Actual365Fixed", ...) {
+  function(rate, date1, date2, from="ActualActual", to="Actual365Fixed", ...) {
     fromFraction <- eval(parse(text = from))(date1, date2, ...)
     toFraction <- eval(parse(text = to))(date1, date2, ...)
     rate * fromFraction / toFraction
@@ -209,7 +209,7 @@ conventionToConvention <- convention2Convention <-
 #'
 #' v <- f(cashflowTimes, cashflow, rates)
 
-presentValue <- pv <- function(compounding = "continuous", frequency = 1, ...) {
+presentValue <- pv <- function(compounding="continuous", frequency=1, ...) {
   function(cashflowTimes, cashflow, rates, frequency, ...) {
     discountFactors <- rateToDiscount(compounding)(cashflowTimes, rates, frequency, ...)
     sum(cashflow * discountFactors)

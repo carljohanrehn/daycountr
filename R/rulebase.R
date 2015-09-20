@@ -1,4 +1,4 @@
-holidaySTOCKHOLM <- function (year = getRmetricsOptions("currentYear")) {
+holidaySTOCKHOLM <- function (year=getRmetricsOptions("currentYear")) {
   
   holidays <- c(NewYearsDay(year), 
                 Epiphany(year), GoodFriday(year), EasterMonday(year), 
@@ -16,19 +16,19 @@ holidaySTOCKHOLM <- function (year = getRmetricsOptions("currentYear")) {
   }
   
   holidays <- sort(holidays)
-  holidays <- timeDate(format(holidays), zone = "Stockholm", FinCenter = "Stockholm")
+  holidays <- timeDate(format(holidays), zone="Stockholm", FinCenter="Stockholm")
   
   holidays
 }
 
-SEMidsummerEve <- function (year = getRmetricsOptions("currentYear")) {
+SEMidsummerEve <- function (year=getRmetricsOptions("currentYear")) {
   timeNdayOnOrBefore(timeDate(as.character(year * 10000 + 625)), nday = 5)
 }
 
-SENationalDay <- function (year = getRmetricsOptions("currentYear")) {
+SENationalDay <- function (year=getRmetricsOptions("currentYear")) {
   timeDate(as.character(year * 10000 + 606))
 }
 
-SENewYearsEve <- function (year = getRmetricsOptions("currentYear")) {
+SENewYearsEve <- function (year=getRmetricsOptions("currentYear")) {
   timeDate(as.character(year * 10000 + 1231))
 }

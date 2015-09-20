@@ -31,7 +31,7 @@
 
 yearFraction <- 
   function(date1, date2, convention, ...) { 
-    eval(parse(text = convention))(date1, date2, ...)
+    eval(parse(text=convention))(date1, date2, ...)
   }
 
 #' Find number of days between dates.
@@ -55,7 +55,7 @@ yearFraction <-
 #' dayCount(date1, date2)
 
 dayCount <- daysBetween <- 
-  function(date1, date2, includeFirst = FALSE, includeLast = TRUE) {
+  function(date1, date2, includeFirst=FALSE, includeLast=TRUE) {
     
 #    len1 <- length(date1)
 #    len2 <- length(date2)
@@ -169,13 +169,13 @@ Actual365Fixed <-
 #' @examples
 #'
 #'  date1 <- timeDate("2012-03-31")
-#'  date2 <- timeSequence(from = "2012-03-31", to = "2012-12-11", by = "month")
+#'  date2 <- timeSequence(from="2012-03-31", to="2012-12-11", by="month")
 #'
 #'  ActualActual(date1, date2)
 
 ActualActual <- Actual365 <- 
   function(date1, date2, method = "ISDA") {
-    eval(parse(text = method))(date1, date2)
+    eval(parse(text=method))(date1, date2)
   }
 
 #' The ISDA day count convention.
@@ -196,7 +196,7 @@ ActualActual <- Actual365 <-
 #   Suppose we have the following two dates:
 #
 #   date1 <- timeDate("2012-03-31")
-#   date2 <- timeSequence(from = "2012-03-31", to = "2012-12-11", by = "month")
+#   date2 <- timeSequence(from="2012-03-31", to="2012-12-11", by="month")
 #
 #   Now, calculate the number of day count fraction:
 #
@@ -312,14 +312,14 @@ AFB <-
 #' @examples
 #'
 #' date1 <- timeDate("2012-03-31")
-#' date2 <- timeSequence(from = "2012-03-31", to = "2012-12-11", by = "month")
+#' date2 <- timeSequence(from="2012-03-31", to="2012-12-11", by="month")
 #'
 #' Thirty360(date1, date2)
 #' Thirty360(date1, date2, "USA")
 
 Thirty360 <- 
-  function(date1, date2, method = "EU") {
-    eval(parse(text = method))(date1, date2)
+  function(date1, date2, method="EU") {
+    eval(parse(text=method))(date1, date2)
   }
 
 #' The Eurobond basis (30E/360).
@@ -354,7 +354,7 @@ Thirty360 <-
 #   Suppose we have the following two dates:
 #
 #   date1 <- timeDate("2012-03-31")
-#   date2 <- timeSequence(from = "2012-03-31", to = "2012-12-11", by = "month")
+#   date2 <- timeSequence(from="2012-03-31", to="2012-12-11", by="month")
 #
 #   Now, calculate the number of day count fraction:
 #
@@ -422,7 +422,7 @@ EU <- EuroBondBasis <-
 #   Suppose we have the following two dates:
 #
 #   date1 <- timeDate("2012-03-31")
-#   date2 <- timeSequence(from = "2012-03-31", to = "2012-12-11", by = "month")
+#   date2 <- timeSequence(from="2012-03-31", to="2012-12-11", by="month")
 #
 #   Now, calculate the number of day count fraction:
 #
@@ -473,7 +473,7 @@ US <- BondBasis <-
 #' 
 
 FixedCoupon <- 
-  function(frequency = 1) { 
+  function(frequency=1) {
     1 / frequency
   }
 
@@ -500,18 +500,18 @@ FixedCoupon <-
 # dateNumber2 = datenum( 2010, 3, 11 ) + ( 1:31 )'
 # calendarName = 'UnitedStates'
 # marketName = 'NYSE'
-# nBusinessDays = businessDaysBetween( dateNumber1, dateNumber2, false, true, calendarName, marketName )
+# nBusinessDays = businessDaysBetween(dateNumber1, dateNumber2, false, true, calendarName, marketName)
 # 
-# nBusinessDays = businessDaysBetween( dateNumber1, dateNumber2, false, true, 'Norway' )
+# nBusinessDays = businessDaysBetween(dateNumber1, dateNumber2, false, true, 'Norway')
 # 
-# nBusinessDays = businessDaysBetween( dateNumber1, dateNumber2, false, true )
+# nBusinessDays = businessDaysBetween(dateNumber1, dateNumber2, false, true)
 #'
 #' @aliases bizDaysBetween
 #'
 #' @author Carl Johan Rehn <care02@@gmail.com>.
 
 bizDayCount <- bizDaysBetween <- 
-  function(date1, date2, includeFirst = TRUE, includeLast = TRUE, holidayCalendar) {
+  function(date1, date2, includeFirst=TRUE, includeLast=TRUE, holidayCalendar) {
 
     
 # ToDo...
