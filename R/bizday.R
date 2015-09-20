@@ -21,7 +21,7 @@
 #' 
 #' @examples
 #' 
-#' dates <- timeSequence(from = "2012-03-12", to = "2012-04-11")
+#' dates <- timeSequence(from="2012-03-12", to="2012-04-11")
 #' convention <- "Following"
 #'
 #' adjustBizDay(dates, convention)
@@ -46,7 +46,7 @@ adjustBizDay <- function(dates, convention, ...) {
 #'
 #' @examples 
 #' 
-#' dates <- timeSequence(from = "2012-03-12", to = "2012-04-11")
+#' dates <- timeSequence(from="2012-03-12", to="2012-04-11")
 #' convention <- "Following"
 #' nBusinessDays <- rep(2, length(dates))
 #'
@@ -61,10 +61,10 @@ adjustBizDay <- function(dates, convention, ...) {
 
 advanceBizDay <- function(dates, nBusinessDays, convention, ...) {
   switch(convention, 
-         Following = moveBizDay(dates, nBusinessDays, ...), 
-         ModifiedFollowing = modifyBizDay(dates, nBusinessDays, ...), 
-         Preceding = moveBizDay(dates, -nBusinessDays, ...), 
-         ModifiedPreceding = modifyBizDay(dates, -nBusinessDays, ...), 
+         Following=moveBizDay(dates, nBusinessDays, ...), 
+         ModifiedFollowing=modifyBizDay(dates, nBusinessDays, ...), 
+         Preceding=moveBizDay(dates, -nBusinessDays, ...), 
+         ModifiedPreceding=modifyBizDay(dates, -nBusinessDays, ...), 
          dates)
 }
 
@@ -83,7 +83,7 @@ advanceBizDay <- function(dates, nBusinessDays, convention, ...) {
 #'
 #' @examples 
 #' 
-#' dates <- timeSequence(from = "2012-03-12", to = "2012-04-11")
+#' dates <- timeSequence(from="2012-03-12", to="2012-04-11")
 #' nBusinessDays <- rep(2, length(dates))
 #'
 #' modifyBizDay(dates, nBusinessDays)
@@ -115,7 +115,7 @@ modifyBizDay <- function(dates, nBusinessDays, ...) {
 #'
 #' @examples 
 #' 
-#' dates <- timeSequence(from = "2012-03-12", to = "2012-04-11")
+#' dates <- timeSequence(from="2012-03-12", to="2012-04-11")
 #' nBusinessDays <- rep(2, length(dates))
 #'
 #' moveBizDay(dates, nBusinessDays)
@@ -129,7 +129,7 @@ modifyBizDay <- function(dates, nBusinessDays, ...) {
 
 ## ... = holidays, e.g. holidayNYSE()
 
-## dates <- timeSequence(from = "2012-03-12", to = "2012-04-11")
+## dates <- timeSequence(from="2012-03-12", to="2012-04-11")
 ## nBusinessDays <- rep(1, length(dates))
 ## nBusinessDays <- rep(2, length(dates))
 ## nBusinessDays <- rep(-1, length(dates))
@@ -167,10 +167,10 @@ moveBizDay <- function(dates, nBusinessDays, ...) {
 #             "Preceding", dates are adjusted to the last day of the month but if that day
 #             is a weekend or holiday, then it is adjusted backward to the previous good business day
 
-endOfMonth <- function(dates, convention = "Last", ...) {
+endOfMonth <- function(dates, convention="Last", ...) {
   switch(convention, 
-         Last = timeLastDayInMonth(dates), 
-         Preceding = moveBizDay(timeLastDayInMonth(dates), -1, ...), 
+         Last=timeLastDayInMonth(dates), 
+         Preceding=moveBizDay(timeLastDayInMonth(dates), -1, ...), 
          dates)
 }
 
@@ -195,7 +195,7 @@ rolloverDay <- function(dates, months, ...) {
 #' 
 # Settlement T+1 T+3 T+5 -> to yearFraction
 
-settlementDay <- function(valuationDate, nSettlementDays = 3, convention = "Following", ...) { 
+settlementDay <- function(valuationDate, nSettlementDays=3, convention="Following", ...) { 
   advanceBizDay(valuationDate + nSettlementDays, convention, ...)
 }
 
@@ -219,7 +219,7 @@ settlementDay <- function(valuationDate, nSettlementDays = 3, convention = "Foll
 ##IMMDays = dateNumber( isIMMDay );
 
 IMMDay <- function(dates, ...) {
-  moveBizday(timeNthNdayInMonth(timeLastDayInQuarter(dates), nday = 3, nth = 3), -2, ...)
+  moveBizday(timeNthNdayInMonth(timeLastDayInQuarter(dates), nday=3, nth=3), -2, ...)
 }
 
 isIMMDay <- function() {NULL}
