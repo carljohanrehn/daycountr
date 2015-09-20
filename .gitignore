@@ -1,5 +1,21 @@
 *̃
 *.iml
 .idea/
+.Rproj.user
+.Rhistory
+.RData
+demo/
+inst/
+man/
+R/daycountr-package.r
+R/zzz.R
+src/
+src/*.o
+src/*.so
+src/*.dll
+tests/
+DESCRIPTION
+NAMESPACE
+
 
 
