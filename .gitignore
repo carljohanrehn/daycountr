@@ -14,5 +14,6 @@ src/*.o
 src/*.so
 src/*.dll
 tests/
+ChangeLog
 DESCRIPTION
 NAMESPACE
